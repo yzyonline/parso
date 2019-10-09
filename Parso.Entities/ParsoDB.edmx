@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ParsoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationDefinition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="RootUrl" Type="varchar" MaxLength="2000" />
+          <Property Name="DetailUrl" Type="varchar" MaxLength="2000" />
+          <Property Name="CatalogDetailUrl" Type="varchar(max)" />
+          <Property Name="CatalogSeperator" Type="varchar" MaxLength="200" />
+          <Property Name="ApplicationType" Type="varchar" MaxLength="50" />
+          <Property Name="RecordDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="ApplicationId" Type="bigint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="RecordDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Catalog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="RootUrl" Type="varchar" MaxLength="2000" />
+          <Property Name="Url" Type="varchar" MaxLength="2000" />
+          <Property Name="RecordDate" Type="datetime" />
+          <Property Name="BatchId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatalogId" Type="bigint" />
+          <Property Name="BarcodeId" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="500" />
+          <Property Name="Code" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Detail" Type="varchar" MaxLength="4000" />
+          <Property Name="ThumbPictureUrl" Type="varchar" MaxLength="1000" />
+          <Property Name="PictureUrl" Type="varchar" MaxLength="2000" />
+          <Property Name="ProductUrl" Type="varchar" MaxLength="2000" />
+          <Property Name="OldPrice" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="RecordDate" Type="datetime" />
+          <Property Name="DiscountDetail" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <Association Name="Application_fk">
+          <End Role="ApplicationDefinition" Type="Self.ApplicationDefinition" Multiplicity="1" />
+          <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationDefinition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Batch_fk">
+          <End Role="Batch" Type="Self.Batch" Multiplicity="0..1" />
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Catalog">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Catalog_fk">
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CatalogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParsoModelStoreContainer">
+          <EntitySet Name="ApplicationDefinition" EntityType="Self.ApplicationDefinition" Schema="Parso" store:Type="Tables" />
+          <EntitySet Name="Batch" EntityType="Self.Batch" Schema="Parso" store:Type="Tables" />
+          <EntitySet Name="Catalog" EntityType="Self.Catalog" Schema="Parso" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="Parso" store:Type="Tables" />
+          <AssociationSet Name="Application_fk" Association="Self.Application_fk">
+            <End Role="ApplicationDefinition" EntitySet="ApplicationDefinition" />
+            <End Role="Batch" EntitySet="Batch" />
+          </AssociationSet>
+          <AssociationSet Name="Batch_fk" Association="Self.Batch_fk">
+            <End Role="Batch" EntitySet="Batch" />
+            <End Role="Catalog" EntitySet="Catalog" />
+          </AssociationSet>
+          <AssociationSet Name="Catalog_fk" Association="Self.Catalog_fk">
+            <End Role="Catalog" EntitySet="Catalog" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ParsoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ParsoEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Product" EntityType="ParsoModel.Product" />
+          <EntitySet Name="Catalog" EntityType="ParsoModel.Catalog" />
+          <AssociationSet Name="Catalog_fk" Association="ParsoModel.Catalog_fk">
+            <End Role="Catalog" EntitySet="Catalog" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <EntitySet Name="ApplicationDefinition" EntityType="ParsoModel.ApplicationDefinition" />
+          <EntitySet Name="Batch" EntityType="ParsoModel.Batch" />
+          <AssociationSet Name="Application_fk" Association="ParsoModel.Application_fk">
+            <End Role="ApplicationDefinition" EntitySet="ApplicationDefinition" />
+            <End Role="Batch" EntitySet="Batch" />
+          </AssociationSet>
+          <AssociationSet Name="Batch_fk" Association="ParsoModel.Batch_fk">
+            <End Role="Batch" EntitySet="Batch" />
+            <End Role="Catalog" EntitySet="Catalog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatalogId" Type="Int64" />
+          <Property Name="BarcodeId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ThumbPictureUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PictureUrl" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ProductUrl" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="OldPrice" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="RecordDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Catalog" Relationship="ParsoModel.Catalog_fk" FromRole="Product" ToRole="Catalog" />
+          <Property Name="DiscountDetail" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Catalog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RootUrl" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="RecordDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="ParsoModel.Catalog_fk" FromRole="Catalog" ToRole="Product" />
+          <Property Name="BatchId" Type="Int64" />
+          <NavigationProperty Name="Batch" Relationship="ParsoModel.Batch_fk" FromRole="Catalog" ToRole="Batch" />
+        </EntityType>
+        <Association Name="Catalog_fk">
+          <End Type="ParsoModel.Catalog" Role="Catalog" Multiplicity="0..1" />
+          <End Type="ParsoModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalog">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CatalogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ApplicationDefinition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RootUrl" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DetailUrl" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CatalogDetailUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CatalogSeperator" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecordDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Batch" Relationship="ParsoModel.Application_fk" FromRole="ApplicationDefinition" ToRole="Batch" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationId" Type="Int64" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="RecordDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ApplicationDefinition" Relationship="ParsoModel.Application_fk" FromRole="Batch" ToRole="ApplicationDefinition" />
+          <NavigationProperty Name="Catalog" Relationship="ParsoModel.Batch_fk" FromRole="Batch" ToRole="Catalog" />
+        </EntityType>
+        <Association Name="Application_fk">
+          <End Type="ParsoModel.ApplicationDefinition" Role="ApplicationDefinition" Multiplicity="1" />
+          <End Type="ParsoModel.Batch" Role="Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationDefinition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Batch_fk">
+          <End Type="ParsoModel.Batch" Role="Batch" Multiplicity="0..1" />
+          <End Type="ParsoModel.Catalog" Role="Catalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Catalog">
+              <PropertyRef Name="BatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ParsoModelStoreContainer" CdmEntityContainer="ParsoEntities" >
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="ParsoModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="DiscountDetail" ColumnName="DiscountDetail" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+                <ScalarProperty Name="ProductUrl" ColumnName="ProductUrl" />
+                <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+                <ScalarProperty Name="ThumbPictureUrl" ColumnName="ThumbPictureUrl" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BarcodeId" ColumnName="BarcodeId" />
+                <ScalarProperty Name="CatalogId" ColumnName="CatalogId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Catalog">
+            <EntityTypeMapping TypeName="ParsoModel.Catalog">
+              <MappingFragment StoreEntitySet="Catalog">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="RootUrl" ColumnName="RootUrl" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationDefinition">
+            <EntityTypeMapping TypeName="ParsoModel.ApplicationDefinition">
+              <MappingFragment StoreEntitySet="ApplicationDefinition">
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="CatalogSeperator" ColumnName="CatalogSeperator" />
+                <ScalarProperty Name="CatalogDetailUrl" ColumnName="CatalogDetailUrl" />
+                <ScalarProperty Name="DetailUrl" ColumnName="DetailUrl" />
+                <ScalarProperty Name="RootUrl" ColumnName="RootUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batch">
+            <EntityTypeMapping TypeName="ParsoModel.Batch">
+              <MappingFragment StoreEntitySet="Batch">
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

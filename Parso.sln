@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso", "Parso\Parso.csproj", "{5C798787-59B1-481E-8E34-675038EBA376}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso.HtmlParser", "Parso.HtmlParser\Parso.HtmlParser.csproj", "{ECBB4AE7-3F6E-4367-85DD-3FE9B0CE20C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso.NUnit", "Parso.NUnit\Parso.NUnit.csproj", "{D3C21B35-6450-493D-BDD0-A7D7220DCA55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso.Entities", "Parso.Entities\Parso.Entities.csproj", "{57632EED-1B80-4274-AC89-FCB4B5224AB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso.Util", "Parso.Util\Parso.Util.csproj", "{3ABB6580-4B36-4F87-A8C5-94FAF50F9CDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso.Integration", "Parso.Integration\Parso.Integration.csproj", "{61F4D355-5E9D-4A52-ACFF-1BA3D8A0B640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso.Data", "Parso.Data\Parso.Data.csproj", "{6CC97612-9699-4441-847A-FDD985B8E5E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parso.Common", "Parso.Common\Parso.Common.csproj", "{738C1E89-5CE3-445E-AA34-12FE9B3CF1C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C798787-59B1-481E-8E34-675038EBA376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C798787-59B1-481E-8E34-675038EBA376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C798787-59B1-481E-8E34-675038EBA376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C798787-59B1-481E-8E34-675038EBA376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECBB4AE7-3F6E-4367-85DD-3FE9B0CE20C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECBB4AE7-3F6E-4367-85DD-3FE9B0CE20C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECBB4AE7-3F6E-4367-85DD-3FE9B0CE20C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECBB4AE7-3F6E-4367-85DD-3FE9B0CE20C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C21B35-6450-493D-BDD0-A7D7220DCA55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C21B35-6450-493D-BDD0-A7D7220DCA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C21B35-6450-493D-BDD0-A7D7220DCA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C21B35-6450-493D-BDD0-A7D7220DCA55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57632EED-1B80-4274-AC89-FCB4B5224AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57632EED-1B80-4274-AC89-FCB4B5224AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57632EED-1B80-4274-AC89-FCB4B5224AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57632EED-1B80-4274-AC89-FCB4B5224AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABB6580-4B36-4F87-A8C5-94FAF50F9CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABB6580-4B36-4F87-A8C5-94FAF50F9CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABB6580-4B36-4F87-A8C5-94FAF50F9CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABB6580-4B36-4F87-A8C5-94FAF50F9CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61F4D355-5E9D-4A52-ACFF-1BA3D8A0B640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61F4D355-5E9D-4A52-ACFF-1BA3D8A0B640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61F4D355-5E9D-4A52-ACFF-1BA3D8A0B640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61F4D355-5E9D-4A52-ACFF-1BA3D8A0B640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC97612-9699-4441-847A-FDD985B8E5E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC97612-9699-4441-847A-FDD985B8E5E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC97612-9699-4441-847A-FDD985B8E5E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC97612-9699-4441-847A-FDD985B8E5E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{738C1E89-5CE3-445E-AA34-12FE9B3CF1C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{738C1E89-5CE3-445E-AA34-12FE9B3CF1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{738C1E89-5CE3-445E-AA34-12FE9B3CF1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{738C1E89-5CE3-445E-AA34-12FE9B3CF1C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://yilmazyavuz.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Parso\\Parso.csproj
+		SccProjectName1 = Parso
+		SccLocalPath1 = Parso
+		SccProjectUniqueName2 = Parso.HtmlParser\\Parso.HtmlParser.csproj
+		SccProjectName2 = Parso.HtmlParser
+		SccLocalPath2 = Parso.HtmlParser
+		SccProjectUniqueName3 = Parso.NUnit\\Parso.NUnit.csproj
+		SccProjectName3 = Parso.NUnit
+		SccLocalPath3 = Parso.NUnit
+		SccProjectUniqueName4 = Parso.Entities\\Parso.Entities.csproj
+		SccProjectName4 = Parso.Entities
+		SccLocalPath4 = Parso.Entities
+		SccProjectUniqueName5 = Parso.Util\\Parso.Util.csproj
+		SccProjectName5 = Parso.Util
+		SccLocalPath5 = Parso.Util
+		SccProjectUniqueName6 = Parso.Integration\\Parso.Integration.csproj
+		SccProjectName6 = Parso.Integration
+		SccLocalPath6 = Parso.Integration
+		SccProjectUniqueName7 = Parso.Data\\Parso.Data.csproj
+		SccProjectName7 = Parso.Data
+		SccLocalPath7 = Parso.Data
+		SccProjectUniqueName8 = Parso.Common\\Parso.Common.csproj
+		SccProjectName8 = Parso.Common
+		SccLocalPath8 = Parso.Common
+	EndGlobalSection
+EndGlobal

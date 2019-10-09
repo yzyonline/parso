@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="416d7d2eeab94940894bdd82eaaec01d" Name="Diagram1" >
+        <EntityTypeShape EntityType="ParsoModel.Product" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ParsoModel.Catalog" Width="1.5" PointX="5" PointY="1.125" />
+        <AssociationConnector Association="ParsoModel.Catalog_fk" />
+        <EntityTypeShape EntityType="ParsoModel.ApplicationDefinition" Width="1.5" PointX="3.5" PointY="5.5" />
+        <EntityTypeShape EntityType="ParsoModel.Batch" Width="1.5" PointX="5.75" PointY="5.625" />
+        <AssociationConnector Association="ParsoModel.Application_fk" />
+        <AssociationConnector Association="ParsoModel.Batch_fk" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
